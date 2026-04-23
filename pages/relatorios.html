@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AR Ecológico – Relatórios</title>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../assets/styles/style.css">
+  <link rel="stylesheet" href="../assets/styles/pages.css">
+  <style>
+    .report-card {
+      background: var(--bg-card);
+      border-radius: var(--radius-card);
+      box-shadow: var(--sombra-card);
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      border-top: 4px solid var(--verde-claro);
+      transition: box-shadow var(--transicao), transform var(--transicao);
+      cursor: pointer;
+    }
+    .report-card:hover { box-shadow: var(--sombra-hover); transform: translateY(-2px); }
+    .report-icon { width: 48px; height: 48px; border-radius: 12px; background: #f0fdf4; display: flex; align-items: center; justify-content: center; font-size: 22px; color: var(--verde-claro); }
+    .report-title { font-family: var(--fonte-display); font-size: 14.5px; font-weight: 700; color: var(--texto-principal); }
+    .report-desc { font-size: 12.5px; color: var(--texto-secundario); line-height: 1.5; }
+    .report-actions { display: flex; gap: 8px; margin-top: 4px; }
+    .reports-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 20px; }
+
+    .bar-chart { display: flex; flex-direction: column; gap: 10px; }
+    .bar-row { display: flex; align-items: center; gap: 12px; font-size: 13px; }
+    .bar-label { width: 120px; flex-shrink: 0; color: var(--texto-secundario); font-size: 12px; }
+    .bar-track { flex: 1; height: 10px; background: #e5ece7; border-radius: 20px; overflow: hidden; }
+    .bar-fill { height: 100%; border-radius: 20px; background: var(--verde-claro); transition: width 1s ease; }
+    .bar-val { width: 70px; flex-shrink: 0; text-align: right; font-weight: 600; font-size: 12px; }
+  </style>
+</head>
+<body>
+
+<main class="main" id="pagina">
+  <div class="page-content">
+
+    <!-- Filtro global -->
+    <div class="form-card" style="padding:20px">
+      <div style="display:flex; align-items:center; gap:16px; flex-wrap:wrap">
+        <div style="display:flex; align-items:center; gap:8px; font-size:13px; color:var(--texto-secundario)">
+          <i class="fa fa-calendar-days" style="color:var(--verde-claro)"></i> Período:
+        </div>
+        <select class="form-control" style="max-width:180px">
+          <option>Março / 2025</option>
+          <option>Fevereiro / 2025</option>
+          <option>Janeiro / 2025</option>
+          <option>Últimos 3 meses</option>
+          <option>Ano 2025</option>
+        </select>
+        <button class="btn btn-primary btn-sm" onclick="showToast('Relatórios atualizados!','success')">
+          <i class="fa fa-rotate"></i> Atualizar
+        </button>
+        <button class="btn btn-secondary btn-sm" onclick="showToast('Exportando todos os relatórios…','success')">
+          <i class="fa fa-file-excel"></i> Exportar Tudo
+        </button>
+      </div>
+    </div>
+
+    <!-- Visão geral -->
+    <div style="display:grid; grid-template-columns:1fr 1fr; gap:24px">
+
+      <!-- Faturamento por mês -->
+      <div class="form-card">
+        <div class="form-card-title"><i class="fa fa-chart-bar"></i> Faturamento por Mês (2025)</div>
+        <div class="bar-chart" id="chartFaturamento">
+          <div class="bar-row"><span class="bar-label">Janeiro</span><div class="bar-track"><div class="bar-fill" style="width:72%"></div></div><span class="bar-val">R$ 36.000</span></div>
+          <div class="bar-row"><span class="bar-label">Fevereiro</span><div class="bar-track"><div class="bar-fill" style="width:82%"></div></div><span class="bar-val">R$ 41.000</span></div>
+          <div class="bar-row"><span class="bar-label">Março</span><div class="bar-track"><div class="bar-fill" style="width:97%"></div></div><span class="bar-val">R$ 48.750</span></div>
+        </div>
+      </div>
+
+      <!-- OS por tipo -->
+      <div class="form-card">
+        <div class="form-card-title"><i class="fa fa-chart-pie"></i> OS por Tipo de Serviço</div>
+        <div class="bar-chart">
+          <div class="bar-row"><span class="bar-label">Preventiva</span><div class="bar-track"><div class="bar-fill" style="width:60%;background:#16a34a"></div></div><span class="bar-val">28 OS (60%)</span></div>
+          <div class="bar-row"><span class="bar-label">Corretiva</span><div class="bar-track"><div class="bar-fill" style="width:26%;background:#d97706"></div></div><span class="bar-val">12 OS (26%)</span></div>
+          <div class="bar-row"><span class="bar-label">Instalação</span><div class="bar-track"><div class="bar-fill" style="width:14%;background:#7c3aed"></div></div><span class="bar-val">6 OS (14%)</span></div>
+        </div>
+      </div>
+
+      <!-- Ranking de técnicos -->
+      <div class="form-card">
+        <div class="form-card-title"><i class="fa fa-medal"></i> Ranking de Técnicos (Março)</div>
+        <div class="bar-chart">
+          <div class="bar-row"><span class="bar-label">Ricardo Souza</span><div class="bar-track"><div class="bar-fill" style="width:100%;background:#16a34a"></div></div><span class="bar-val">12 OS</span></div>
+          <div class="bar-row"><span class="bar-label">Felipe Torres</span><div class="bar-track"><div class="bar-fill" style="width:92%;background:#0891b2"></div></div><span class="bar-val">11 OS</span></div>
+          <div class="bar-row"><span class="bar-label">Marcos Lima</span><div class="bar-track"><div class="bar-fill" style="width:75%;background:#7c3aed"></div></div><span class="bar-val">9 OS</span></div>
+          <div class="bar-row"><span class="bar-label">Ana Beatriz</span><div class="bar-track"><div class="bar-fill" style="width:50%;background:#d97706"></div></div><span class="bar-val">6 OS</span></div>
+        </div>
+      </div>
+
+      <!-- Top clientes -->
+      <div class="form-card">
+        <div class="form-card-title"><i class="fa fa-trophy"></i> Top Clientes por Faturamento</div>
+        <div class="bar-chart">
+          <div class="bar-row"><span class="bar-label">Hotel Garden</span><div class="bar-track"><div class="bar-fill" style="width:100%;background:#16a34a"></div></div><span class="bar-val">R$ 12.400</span></div>
+          <div class="bar-row"><span class="bar-label">Cond. Verde Park</span><div class="bar-track"><div class="bar-fill" style="width:75%;background:#0891b2"></div></div><span class="bar-val">R$ 9.300</span></div>
+          <div class="bar-row"><span class="bar-label">Clínica Vida</span><div class="bar-track"><div class="bar-fill" style="width:56%;background:#7c3aed"></div></div><span class="bar-val">R$ 6.950</span></div>
+          <div class="bar-row"><span class="bar-label">Superm. Bom Preço</span><div class="bar-track"><div class="bar-fill" style="width:48%;background:#d97706"></div></div><span class="bar-val">R$ 5.980</span></div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Catálogo de relatórios -->
+    <div>
+      <h2 class="section-label"><i class="fa fa-folder-open"></i> Relatórios Disponíveis</h2>
+      <div class="reports-grid">
+
+        <div class="report-card" style="border-top-color:#16a34a">
+          <div class="report-icon"><i class="fa fa-chart-line"></i></div>
+          <div class="report-title">DRE – Demonstrativo de Resultado</div>
+          <div class="report-desc">Receitas, custos, despesas e lucro líquido do período selecionado.</div>
+          <div class="report-actions">
+            <button class="btn btn-primary btn-sm" onclick="gerarRelatorio('DRE')"><i class="fa fa-eye"></i> Visualizar</button>
+            <button class="btn btn-secondary btn-sm" onclick="showToast('Exportando PDF…','success')"><i class="fa fa-file-pdf"></i></button>
+          </div>
+        </div>
+
+        <div class="report-card" style="border-top-color:#0891b2">
+          <div class="report-icon" style="background:#ecfeff;color:#0891b2"><i class="fa fa-clipboard-list"></i></div>
+          <div class="report-title">Ordens de Serviço por Período</div>
+          <div class="report-desc">Listagem completa de OS com filtros por status, técnico e tipo.</div>
+          <div class="report-actions">
+            <button class="btn btn-primary btn-sm" onclick="gerarRelatorio('OS')"><i class="fa fa-eye"></i> Visualizar</button>
+            <button class="btn btn-secondary btn-sm" onclick="showToast('Exportando Excel…','success')"><i class="fa fa-file-excel"></i></button>
+          </div>
+        </div>
+
+        <div class="report-card" style="border-top-color:#7c3aed">
+          <div class="report-icon" style="background:#f5f3ff;color:#7c3aed"><i class="fa fa-users"></i></div>
+          <div class="report-title">Inadimplência</div>
+          <div class="report-desc">Clientes com pagamentos vencidos, valores e dias de atraso.</div>
+          <div class="report-actions">
+            <button class="btn btn-primary btn-sm" onclick="gerarRelatorio('Inadimplência')"><i class="fa fa-eye"></i> Visualizar</button>
+            <button class="btn btn-secondary btn-sm" onclick="showToast('Exportando PDF…','success')"><i class="fa fa-file-pdf"></i></button>
+          </div>
+        </div>
+
+        <div class="report-card" style="border-top-color:#d97706">
+          <div class="report-icon" style="background:#fffbeb;color:#d97706"><i class="fa fa-boxes-stacked"></i></div>
+          <div class="report-title">Movimentação de Estoque</div>
+          <div class="report-desc">Entradas, saídas e saldo de cada item do período.</div>
+          <div class="report-actions">
+            <button class="btn btn-primary btn-sm" onclick="gerarRelatorio('Estoque')"><i class="fa fa-eye"></i> Visualizar</button>
+            <button class="btn btn-secondary btn-sm" onclick="showToast('Exportando Excel…','success')"><i class="fa fa-file-excel"></i></button>
+          </div>
+        </div>
+
+        <div class="report-card" style="border-top-color:#dc2626">
+          <div class="report-icon" style="background:#fef2f2;color:#dc2626"><i class="fa fa-users-gear"></i></div>
+          <div class="report-title">Produtividade da Equipe</div>
+          <div class="report-desc">OS por técnico, tempo médio, avaliação e retrabalho.</div>
+          <div class="report-actions">
+            <button class="btn btn-primary btn-sm" onclick="gerarRelatorio('Equipe')"><i class="fa fa-eye"></i> Visualizar</button>
+            <button class="btn btn-secondary btn-sm" onclick="showToast('Exportando PDF…','success')"><i class="fa fa-file-pdf"></i></button>
+          </div>
+        </div>
+
+        <div class="report-card" style="border-top-color:#0284c7">
+          <div class="report-icon" style="background:#f0f9ff;color:#0284c7"><i class="fa fa-file-signature"></i></div>
+          <div class="report-title">Carteira de Contratos</div>
+          <div class="report-desc">Contratos ativos, receita recorrente e previsão de renovações.</div>
+          <div class="report-actions">
+            <button class="btn btn-primary btn-sm" onclick="gerarRelatorio('Contratos')"><i class="fa fa-eye"></i> Visualizar</button>
+            <button class="btn btn-secondary btn-sm" onclick="showToast('Exportando PDF…','success')"><i class="fa fa-file-pdf"></i></button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</main>
+
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+<script src="../assets/js/utils.js"></script>
+<script src="../assets/js/nav.js"></script>
+<script>
+  initLayout('relatorios', 'Relatórios', 'fa-chart-column');
+  $(document).ready(function () { animateCards('.summary-card, .report-card'); });
+
+  function gerarRelatorio(nome) {
+    showToast(`Relatório "${nome}" gerado com sucesso!`, 'success');
+  }
+</script>
+</body>
+</html>
