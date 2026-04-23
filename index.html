@@ -25,6 +25,7 @@
 
 	<!-- Nosso arquivo de estilos customizados (estilo visual da empresa) -->
 	<link rel="stylesheet" href="./assets/styles/style.css">
+	<link rel="stylesheet" href="./assets/styles/pages.css">
 </head>
 
 <body>
@@ -56,15 +57,13 @@
 
 				<!-- ── Item simples: Dashboard ── -->
 				<li class="menu-item active">
-					<a href="#">
+					<a href="index.html">
 						<i class="fa fa-house sidebar-icon"></i>
 						<span>Dashboard</span>
 					</a>
 				</li>
 
-				<!-- ── Item com SUBMENU: Ordem de Serviço ──
-				     data-toggle="collapse" + data-target="#os" ativa o colapso Bootstrap
-				     O <ul id="os"> abaixo é o painel que abre/fecha -->
+				<!-- ── Item com SUBMENU: Ordem de Serviço ── -->
 				<li class="menu-item" data-toggle="collapse" data-target="#os">
 					<a href="#">
 						<i class="fa fa-clipboard-list sidebar-icon"></i>
@@ -72,10 +71,9 @@
 						<i class="fa fa-angle-down arrow-icon"></i>
 					</a>
 				</li>
-				<!-- Submenu de OS (oculto por padrão, abre ao clicar no item pai) -->
 				<ul class="sub-menu collapse" id="os">
-					<li><a href="#"><i class="fa fa-plus fa-fw"></i> Nova OS</a></li>
-					<li><a href="#"><i class="fa fa-list fa-fw"></i> Listar OS</a></li>
+					<li><a href="pages/os-nova.html"><i class="fa fa-plus fa-fw"></i> Nova OS</a></li>
+					<li><a href="pages/os-lista.html"><i class="fa fa-list fa-fw"></i> Listar OS</a></li>
 				</ul>
 
 				<!-- ── Item com SUBMENU: Clientes ── -->
@@ -87,13 +85,13 @@
 					</a>
 				</li>
 				<ul class="sub-menu collapse" id="clientes">
-					<li><a href="#"><i class="fa fa-user-plus fa-fw"></i> Cadastrar</a></li>
-					<li><a href="#"><i class="fa fa-list fa-fw"></i> Listar</a></li>
+					<li><a href="pages/clientes-cadastro.html"><i class="fa fa-user-plus fa-fw"></i> Cadastrar</a></li>
+					<li><a href="pages/clientes-lista.html"><i class="fa fa-list fa-fw"></i> Listar</a></li>
 				</ul>
 
 				<!-- ── Item simples: Serviços ── -->
 				<li class="menu-item">
-					<a href="#">
+					<a href="pages/servicos.html">
 						<i class="fa fa-hammer sidebar-icon"></i>
 						<span>Serviços</span>
 					</a>
@@ -101,7 +99,7 @@
 
 				<!-- ── Item simples: Estoque ── -->
 				<li class="menu-item">
-					<a href="#">
+					<a href="pages/estoque.html">
 						<i class="fa fa-boxes-stacked sidebar-icon"></i>
 						<span>Estoque</span>
 					</a>
@@ -109,7 +107,7 @@
 
 				<!-- ── Item simples: Contratos ── -->
 				<li class="menu-item">
-					<a href="#">
+					<a href="pages/contratos.html">
 						<i class="fa fa-file-signature sidebar-icon"></i>
 						<span>Contratos</span>
 					</a>
@@ -124,15 +122,15 @@
 					</a>
 				</li>
 				<ul class="sub-menu collapse" id="financeiro">
-					<li><a href="#"><i class="fa fa-arrow-down fa-fw"></i> Contas a Receber</a></li>
-					<li><a href="#"><i class="fa fa-arrow-up fa-fw"></i> Contas a Pagar</a></li>
-					<li><a href="#"><i class="fa fa-chart-line fa-fw"></i> Fluxo de Caixa</a></li>
-					<li><a href="#"><i class="fa fa-receipt fa-fw"></i> DRE</a></li>
+					<li><a href="pages/financeiro-receber.html"><i class="fa fa-arrow-down fa-fw"></i> Contas a Receber</a></li>
+					<li><a href="pages/financeiro-receber.html"><i class="fa fa-arrow-up fa-fw"></i> Contas a Pagar</a></li>
+					<li><a href="pages/relatorios.html"><i class="fa fa-chart-line fa-fw"></i> Fluxo de Caixa</a></li>
+					<li><a href="pages/relatorios.html"><i class="fa fa-receipt fa-fw"></i> DRE</a></li>
 				</ul>
 
 				<!-- ── Item simples: Relatórios ── -->
 				<li class="menu-item">
-					<a href="#">
+					<a href="pages/relatorios.html">
 						<i class="fa fa-chart-column sidebar-icon"></i>
 						<span>Relatórios</span>
 					</a>
@@ -147,14 +145,14 @@
 					</a>
 				</li>
 				<ul class="sub-menu collapse" id="rh">
-					<li><a href="#"><i class="fa fa-user-tie fa-fw"></i> Cadastrar</a></li>
-					<li><a href="#"><i class="fa fa-clock fa-fw"></i> Controle de Ponto</a></li>
-					<li><a href="#"><i class="fa fa-star fa-fw"></i> Desempenho</a></li>
+					<li><a href="pages/rh-cadastro.html"><i class="fa fa-user-tie fa-fw"></i> Cadastrar</a></li>
+					<li><a href="pages/rh-ponto.html"><i class="fa fa-clock fa-fw"></i> Controle de Ponto</a></li>
+					<li><a href="pages/rh-desempenho.html"><i class="fa fa-star fa-fw"></i> Desempenho</a></li>
 				</ul>
 
 				<!-- ── Item simples: Fiscal (NFS-e) ── -->
 				<li class="menu-item">
-					<a href="#">
+					<a href="pages/fiscal.html">
 						<i class="fa fa-file-invoice sidebar-icon"></i>
 						<span>Fiscal / NFS-e</span>
 					</a>
@@ -162,7 +160,7 @@
 
 				<!-- ── Item simples: Configurações ── -->
 				<li class="menu-item">
-					<a href="#">
+					<a href="pages/configuracoes.html">
 						<i class="fa fa-gear sidebar-icon"></i>
 						<span>Configurações</span>
 					</a>
