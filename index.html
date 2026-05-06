@@ -26,6 +26,13 @@
 	<!-- Nosso arquivo de estilos customizados (estilo visual da empresa) -->
 	<link rel="stylesheet" href="./assets/styles/style.css">
 	<link rel="stylesheet" href="./assets/styles/pages.css">
+
+	<!-- Redireciona para o login -->
+	<script>
+    if (!sessionStorage.getItem('ae_usuario')) {
+        window.location.href = 'pages/login.html';
+    }
+</script>
 </head>
 
 <body>
