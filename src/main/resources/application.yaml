@@ -1,0 +1,12 @@
+spring:
+  application:
+    name: spring-boot-essentials
+
+  thymeleaf:
+    prefix: classpath:/templates/
+    suffix: .html
+    enabled: true
+    cache: false
+
+server:
+  port: 8080
