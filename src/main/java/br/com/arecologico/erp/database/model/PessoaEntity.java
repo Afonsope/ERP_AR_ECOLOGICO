@@ -1,27 +1,30 @@
 package br.com.arecologico.erp.database.model;
 
-public class Pessoa {
+public class PessoaEntity {
 
     private Integer cod_Pessoa;
     private String CPF;
     private String nome;
     private String email;
     private String telefone;
+    private EnderecoEntity endereco;
 
-    Pessoa() {
+    PessoaEntity() {
         cod_Pessoa = 0;
         CPF = new String();
         nome = new String();
         email = new String();
         telefone = new String();
+        endereco = new EnderecoEntity();
     }
 
-    Pessoa(Integer cod_Pessoa, String CPF, String nome, String email, String telefone) {
+    PessoaEntity(Integer cod_Pessoa, String CPF, String nome, String email, String telefone, EnderecoEntity endereco) {
         this.cod_Pessoa = 0;
-        this.CPF = new String();
-        this.nome = new String();
-        this.email = new String();
-        this.telefone = new String();
+        this.CPF = CPF;
+        this.nome = nome;
+        this.email = email;
+        this.telefone = telefone;
+        this.endereco = endereco;
     }
 
     public Integer getCod_Pessoa() {
@@ -64,4 +67,11 @@ public class Pessoa {
         this.telefone = telefone;
     }
 
+    public EnderecoEntity getEndereco() {
+        return endereco;
+    }
+
+    public void setEndereco(EnderecoEntity endereco) {
+        this.endereco = endereco;
+    }
 }

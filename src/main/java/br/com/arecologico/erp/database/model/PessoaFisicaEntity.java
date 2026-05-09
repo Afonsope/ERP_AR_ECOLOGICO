@@ -1,16 +1,16 @@
 package br.com.arecologico.erp.database.model;
 
-public class PessoaFisica extends Pessoa {
+public class PessoaFisicaEntity extends PessoaEntity {
 
     private String data_Nascimento;
 
-    public PessoaFisica() {
+    public PessoaFisicaEntity() {
         data_Nascimento = new String();
     }
 
-    public PessoaFisica(Integer cod_Pessoa, String CPF, String nome, String email, String telefone,
-            String data_Nascimento) {
-        super(cod_Pessoa, CPF, nome, email, telefone);
+    public PessoaFisicaEntity(Integer cod_Pessoa, String CPF, String nome, String email, String telefone,
+            String data_Nascimento, EnderecoEntity endereco) {
+        super(cod_Pessoa, CPF, nome, email, telefone, endereco);
         this.data_Nascimento = data_Nascimento;
     }
 
