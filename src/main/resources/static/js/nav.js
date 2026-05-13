@@ -4,6 +4,23 @@
  * gerencia navegação entre páginas e estado ativo do menu.
  */
 
+/** URL absoluta (pathname) da logo horizontal a partir do script /static/js/nav.js */
+function getLogoHorizontalUrl() {
+  const nodes = document.querySelectorAll('script[src*="nav.js"]');
+  const el = nodes[nodes.length - 1];
+  if (!el || !el.src) return '../static/images/logo/logo_horizontal.png';
+  try {
+    const path = new URL(el.src, window.location.href).pathname;
+    if (path.includes('/static/')) {
+      return path.replace(/\/js\/nav\.js$/i, '/images/logo/logo_horizontal.png');
+    }
+    if (path.endsWith('/js/nav.js')) {
+      return path.replace(/\/js\/nav\.js$/i, '/images/logo/logo_horizontal.png');
+    }
+  } catch (_) { /* noop */ }
+  return '../static/images/logo/logo_horizontal.png';
+}
+
 // ── Definição dos itens de menu ──────────────────────────────────────────
 const menuItems = [
   { id: 'dashboard',    icon: 'fa-house',          label: 'Dashboard',      href: '../index.html' },
@@ -59,13 +76,15 @@ function buildSidebar(activePageId) {
   const isRoot = !window.location.pathname.includes('/pages/');
   const prefix = isRoot ? 'pages/' : '';
 
+  const logoSrc = getLogoHorizontalUrl();
+
   let html = `
     <nav class="nav-side-menu">
       <div class="brand">
-        <div class="brand-text">
-          <i class="fa fa-leaf brand-icon"></i>
-          <span>AR Ecológico</span>
-        </div>
+        <a href="${isRoot ? 'index.html' : '../index.html'}" class="brand-link" title="Início">
+          <img src="${logoSrc}" alt="AR Ecológico" class="brand-logo" width="200" height="48" loading="eager">
+        </a>
+        <span class="brand-sr-fallback">AR Ecológico</span>
       </div>
       <i class="fa fa-bars fa-2x toggle-btn" data-toggle="collapse" data-target="#menu-content"></i>
       <div class="menu-list">
@@ -139,6 +158,17 @@ function buildTopbar(pageTitle, pageIcon) {
   `;
 }
 
+// ── Rodapé com marca (mesmas imagens em todas as páginas internas) ────────
+function buildAppFooter() {
+  const logoSrc = getLogoHorizontalUrl();
+  return `
+    <footer class="app-footer">
+      <img src="${logoSrc}" alt="AR Ecológico" class="app-footer-logo" width="200" height="40" loading="lazy">
+      <p>© 2026 AR Ecológico · ERP interno · Todos os direitos reservados.</p>
+    </footer>
+  `;
+}
+
 // ── Inicializa o layout ───────────────────────────────────────────────────
 function initLayout(activePageId, pageTitle, pageIcon) {
   const sidebar = buildSidebar(activePageId);
@@ -149,6 +179,9 @@ function initLayout(activePageId, pageTitle, pageIcon) {
   const main = document.getElementById('pagina');
   if (main) {
     main.insertAdjacentHTML('afterbegin', topbar);
+    if (!main.querySelector('.app-footer')) {
+      main.insertAdjacentHTML('beforeend', buildAppFooter());
+    }
   }
 
   // Destaque do item ativo via clique

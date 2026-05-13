@@ -23,7 +23,7 @@
       cursor: pointer;
     }
     .report-card:hover { box-shadow: var(--sombra-hover); transform: translateY(-2px); }
-    .report-icon { width: 48px; height: 48px; border-radius: 12px; background: #f0fdf4; display: flex; align-items: center; justify-content: center; font-size: 22px; color: var(--verde-claro); }
+    .report-icon { width: 48px; height: 48px; border-radius: 12px; background: rgba(232,244,253,0.95); display: flex; align-items: center; justify-content: center; font-size: 22px; color: var(--blue-light); }
     .report-title { font-family: var(--fonte-display); font-size: 14.5px; font-weight: 700; color: var(--texto-principal); }
     .report-desc { font-size: 12.5px; color: var(--texto-secundario); line-height: 1.5; }
     .report-actions { display: flex; gap: 8px; margin-top: 4px; }
@@ -32,7 +32,7 @@
     .bar-chart { display: flex; flex-direction: column; gap: 10px; }
     .bar-row { display: flex; align-items: center; gap: 12px; font-size: 13px; }
     .bar-label { width: 120px; flex-shrink: 0; color: var(--texto-secundario); font-size: 12px; }
-    .bar-track { flex: 1; height: 10px; background: #e5ece7; border-radius: 20px; overflow: hidden; }
+    .bar-track { flex: 1; height: 10px; background: rgba(10,74,140,0.1); border-radius: 20px; overflow: hidden; }
     .bar-fill { height: 100%; border-radius: 20px; background: var(--verde-claro); transition: width 1s ease; }
     .bar-val { width: 70px; flex-shrink: 0; text-align: right; font-weight: 600; font-size: 12px; }
   </style>
@@ -81,7 +81,7 @@
       <div class="form-card">
         <div class="form-card-title"><i class="fa fa-chart-pie"></i> OS por Tipo de Serviço</div>
         <div class="bar-chart">
-          <div class="bar-row"><span class="bar-label">Preventiva</span><div class="bar-track"><div class="bar-fill" style="width:60%;background:#16a34a"></div></div><span class="bar-val">28 OS (60%)</span></div>
+          <div class="bar-row"><span class="bar-label">Preventiva</span><div class="bar-track"><div class="bar-fill" style="width:60%;background:linear-gradient(90deg,var(--blue-light),var(--blue))"></div></div><span class="bar-val">28 OS (60%)</span></div>
           <div class="bar-row"><span class="bar-label">Corretiva</span><div class="bar-track"><div class="bar-fill" style="width:26%;background:#d97706"></div></div><span class="bar-val">12 OS (26%)</span></div>
           <div class="bar-row"><span class="bar-label">Instalação</span><div class="bar-track"><div class="bar-fill" style="width:14%;background:#7c3aed"></div></div><span class="bar-val">6 OS (14%)</span></div>
         </div>
@@ -91,7 +91,7 @@
       <div class="form-card">
         <div class="form-card-title"><i class="fa fa-medal"></i> Ranking de Técnicos (Março)</div>
         <div class="bar-chart">
-          <div class="bar-row"><span class="bar-label">Ricardo Souza</span><div class="bar-track"><div class="bar-fill" style="width:100%;background:#16a34a"></div></div><span class="bar-val">12 OS</span></div>
+          <div class="bar-row"><span class="bar-label">Ricardo Souza</span><div class="bar-track"><div class="bar-fill" style="width:100%;background:linear-gradient(90deg,var(--red),var(--red-dark))"></div></div><span class="bar-val">12 OS</span></div>
           <div class="bar-row"><span class="bar-label">Felipe Torres</span><div class="bar-track"><div class="bar-fill" style="width:92%;background:#0891b2"></div></div><span class="bar-val">11 OS</span></div>
           <div class="bar-row"><span class="bar-label">Marcos Lima</span><div class="bar-track"><div class="bar-fill" style="width:75%;background:#7c3aed"></div></div><span class="bar-val">9 OS</span></div>
           <div class="bar-row"><span class="bar-label">Ana Beatriz</span><div class="bar-track"><div class="bar-fill" style="width:50%;background:#d97706"></div></div><span class="bar-val">6 OS</span></div>
