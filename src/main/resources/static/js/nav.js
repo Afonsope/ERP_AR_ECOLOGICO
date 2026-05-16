@@ -102,8 +102,8 @@ const menuItems = [
     submenu: [
       { icon: 'fa-arrow-down', label: 'Contas a Receber', href: base + 'financeiro/receber.html' },
       { icon: 'fa-arrow-up',   label: 'Contas a Pagar',   href: base + 'financeiro/pagar.html' },
-      { icon: 'fa-chart-line', label: 'Fluxo de Caixa',   href: base + 'relatorios/index.html' },
-      { icon: 'fa-receipt',    label: 'DRE',               href: base + 'relatorios/index.html' },
+      { icon: 'fa-chart-line', label: 'Fluxo de Caixa', href: base + 'relatorios/fluxo-caixa.html' },
+      { icon: 'fa-receipt',    label: 'DRE',               href: base + 'relatorios/dre.html' },
     ]
   },
 
